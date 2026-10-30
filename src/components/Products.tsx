@@ -10,7 +10,7 @@ export const getProducts = createAsyncThunk(
       const { data } = await axios.get(
         `${Api}/Product/get-products`
       );
-
+            console.log("BACKEND PRODUCTS:", data);
       return data;
     } catch (error) {
       console.log(error);

@@ -13,6 +13,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import type { AppDispatch, RootState } from '../app/store';
 import { getCategories } from '../components/Category';
+import FlashSales from '../components/FlashSales';
+import BrowseCategory from '../components/BrowseCategory';
+import BestSelling from '../components/BestSelling';
+import MusicBanner from '../components/MusicSect';
+import ExploreProducts from '../components/ExploreProducts';
+import NewArrival from '../components/Arrival';
 
 
 
@@ -176,6 +182,13 @@ const categoryList = figmaCategories
 
       </div>
     </div>
+    <FlashSales/>
+    <BrowseCategory/>
+    <BestSelling/>
+    <MusicBanner/>
+    <ExploreProducts/>
+    <NewArrival/>
+    
     </>
   )
 }

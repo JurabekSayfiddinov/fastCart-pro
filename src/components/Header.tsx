@@ -8,6 +8,17 @@ import { useEffect, useRef, useState } from "react";
 import { logout } from "../Log/logSlice";
 export default function Header() {
   const { darkMode, toggleTheme } = useTheme();
+  const wishlist = useSelector(
+  (state: RootState) => state.wishlist
+);
+const cart = useSelector(
+  (state: RootState) => state.cart
+);
+
+const cartCount = cart.reduce(
+  (total, item) => total + item.quantity,
+  0
+);
   const  isAuthenticated  = useSelector(
   (state: RootState) => state.auth.isAuthenticated
 );
@@ -111,18 +122,46 @@ useEffect(() => {
 </div>
 
 
-          <Link to="/wishlist" aria-label="Wishlist">
-            <Heart
-              size={24}
-              strokeWidth={1.7}
-              className="hover:text-orange-500"
-            />
-          </Link>
+         <Link
+  to="/wishlist"
+  className="relative inline-flex"
+  aria-label="Wishlist"
+>
+  <Heart
+    size={24}
+    strokeWidth={1.7}
+    className="hover:text-[#DB4444]"
+  />
+
+  {wishlist.length > 0 && (
+    <span
+      className="
+        absolute -top-2 -right-2
+        min-w-[17px] h-[17px] px-[3px]
+        bg-[#DB4444] text-white
+        text-[10px] rounded-full
+        flex items-center justify-center
+      "
+    >
+      {wishlist.length}
+    </span>
+  )}
+</Link>
 
       
-          <Link to="/cart" className="relative" aria-label="Shopping cart">
-            <ShoppingCart className="hover:text-orange-500" size={24} strokeWidth={1.7} />
-          </Link>
+         <Link
+  to="/cart"
+  className="relative inline-flex"
+  aria-label="Shopping cart"
+>
+  <ShoppingCart size={24} strokeWidth={1.7} />
+
+  {cartCount > 0 && (
+    <span className="absolute -top-2 -right-2 min-w-[17px] h-[17px] px-1 bg-[#DB4444] text-white text-[10px] rounded-full flex items-center justify-center">
+      {cartCount}
+    </span>
+  )}
+</Link>
 
           <button
   type="button"

@@ -15,7 +15,7 @@ export default function Footer() {
   return (
    <footer
   className={`
-    w-full transition-colors duration-300
+    w-full transition-colors duration-300 mt-[100px]
     ${
       darkMode
         ? "bg-[#080D18] text-white"
